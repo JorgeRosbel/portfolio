@@ -1,0 +1,89 @@
+---
+import Title from './Title.astro';
+
+interface IProyect {
+  name: string;
+  description: string;
+  url: string;
+  tags: string[];
+  lang: string;
+}
+const projects: IProyect[] = [
+  {
+    name: 'http-sentinel',
+    description:
+      '💥A TypeScript library that provides a comprehensive set of HTTP error classes and utilities for handling HTTP errors in your applications.',
+    url: 'https://github.com/JorgeRosbel/http-sentinel',
+    tags: ['fetch', 'error-handling', 'npm'],
+    lang: 'TypeScript',
+  },
+  {
+    name: 'gitzen',
+    description: '🧠AI-powered CLI tool for automatic git commit message generation',
+    url: 'https://github.com/JorgeRosbel/gitzen',
+    tags: ['git', 'ai-powered', 'agentic-ai'],
+    lang: 'TypeScript',
+  },
+  {
+    name: 'NovaBoost',
+    description:
+      '🌟NovaBoost: Free Astro 5 & TailwindCSS blog template—SEO‑optimized, with JSON‑LD and optional AI post generation.',
+    url: 'https://github.com/JorgeRosbel/NovaBoost',
+    tags: ['astro', 'seo-optimization', 'ai-powered'],
+    lang: 'TypeScript',
+  },
+  {
+    name: 'easy-consent',
+    description:
+      '🧪A lightweight consent management solution for Google Analytics and related services. This is a beta version and should be used with caution.',
+    url: 'https://github.com/JorgeRosbel/easy-consent',
+    tags: ['analytics', 'cookie-consent'],
+    lang: 'TypeScript',
+  },
+];
+---
+
+<section class="w-full max-w-[900px] dark:text-dark-text text-light-text flex flex-col gap-7">
+  <Title text="Projects" />
+
+  <div class="grid grid-cols-1 md:grid-cols-2 w-full gap-5">
+    {
+      projects.map(project => (
+        <article
+          class="rounded border dark:border-dark-text/20 border-light-text/20 p-4 flex flex-col justify-between gap-6 fade-up transition-all
+        hover:translate-y-[-10px] duration-300 cursor-pointer"
+        >
+          <div class="flex justify-between items-center">
+            <p class="font-semibold">{project.name}</p>
+            <a href={project.url} target="_blank">
+              <svg
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                width="26"
+                height="26"
+                class="dark:text-dark-text text-light-text opacity-70 transition-all duration-200 hover:opacity-100"
+              >
+                <path
+                  fill="currentColor"
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                />
+              </svg>
+            </a>
+          </div>
+
+          <div class="flex flex-col gap-3 w-full">
+            <p class="dark:text-dark-text/80 text-light-text/80">{project.description}</p>
+
+            <div class="flex items-center justify-start gap-3 my-3">
+              {project.tags.map(tag => (
+                <span class="dark:bg-light-bg/8 bg-dark-bg/8 px-3 py-1 rounded-2xl text-[0.8rem]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>

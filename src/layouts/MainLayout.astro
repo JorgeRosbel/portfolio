@@ -4,13 +4,16 @@ import BaseHead from '@/components/BaseHead.astro';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
-    <BaseHead title="JorgeRosbel | Portfolio" description="" />
+    <BaseHead
+      title="JorgeRosbel | Portfolio"
+      description="Frontend Specialist crafting sleek, scalable web experiences with React, TypeScript, Tailwind CSS and Astro — user‑centered design and performant architectures."
+    />
   </head>
-  <body class="dark:bg-dark-bg w-full bg-light-bg">
+  <body class="dark:bg-dark-bg w-full bg-light-bg flex flex-col items-center">
     <Header />
-    <main class="w-full max-w-[1200px]">
+    <main class="w-full max-w-[900px] flex flex-col items-center px-8">
       <slot />
     </main>
   </body>

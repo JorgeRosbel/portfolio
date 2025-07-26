@@ -2,11 +2,15 @@
 import { SITE_TITLE } from '../consts';
 ---
 
-<header class="dark:bg-dark-bg w-full bg-light-bg flex items-center justify-center px-4">
+<header
+  class="dark:bg-dark-bg w-full bg-light-bg flex items-center justify-center px-4 fixed top-0 z-50"
+>
   <nav
-    class="flex w-full max-w-[900px] items-center justify-between h-20 border-b dark:border-dark-text/10 border-light-text/10"
+    class="flex w-full max-w-[900px] items-center justify-between h-20 border-b dark:border-dark-text/10 border-light-text/10 px-8"
   >
-    <h2 class="dark:text-dark-text text-light-text font-semibold"><a href="/">{SITE_TITLE}</a></h2>
+    <p class="dark:text-dark-text text-light-text tracking-[3px] font-bold text-2xl">
+      <a href="/">{SITE_TITLE}</a>
+    </p>
 
     <div class="flex h-full items-center justify-between gap-4">
       <a href="https://github.com/JorgeRosbel" target="_blank">
