@@ -1,0 +1,11 @@
+---
+type Props = { text: string };
+const { text } = Astro.props as Props;
+---
+
+<h2
+  class="dark:text-dark-text text-light-text fade-up tracking-[3px] font-bold text-2xl relative
+before:w-1/2 w-max before:h-[2px] before:bg-light-text dark:before:bg-dark-text before:absolute before:bottom-[-8px] before:left-0"
+>
+  {text}
+</h2>
