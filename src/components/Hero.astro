@@ -1,14 +1,31 @@
+---
+import Banner from './Banner.astro';
+---
+
 <section
-  class="py-3 dark:text-dark-text text-light-text min-h-[40vh] flex flex-col items-center justify-center px-3 md:px-8 rounded border
-  dark:border-dark-text/20 border-light-text/20 w-[90%] md:w-full mb-10 mt-30 fade-up"
+  class="py-3 dark:text-dark-text text-light-text min-h-[40vh] flex flex-col items-center justify-center md:w-full mb-10 mt-30 fade-up"
 >
+  <p
+    class="dark:text-dark-text text-light-text tracking-[3px] font-bold text-4xl w-full text-start my-8 uppercase"
+  >
+    Jorge Rosbel
+  </p>
   <h1 class="text-[1.2rem] dark:text-dark-text/80 text-light-text text-center md:text-start">
-    I’m <strong class="opacity-100">Jorge Rosbel</strong>, a Frontend Specialist crafting sleek,
-    interactive web experiences with <strong class="opacity-100">React</strong>,<strong
-      class="opacity-100">TypeScript</strong
-    >, <strong class="opacity-100">Tailwind CSS</strong>, and <strong class="opacity-100"
-      >Astro</strong
-    >. I blend user‑centered design with scalable, maintainable architectures, contribute to
-    open‑source, and continuously explore new tools to keep workflows and applications performant.
+    I’m a Frontend Specialist crafting sleek, interactive web experiences with <strong
+      class="opacity-100">React</strong
+    >,<strong class="opacity-100">TypeScript</strong>, <strong class="opacity-100"
+      >Tailwind CSS</strong
+    >, and <strong class="opacity-100">Astro</strong>. I blend user‑centered design with scalable,
+    maintainable architectures, contribute to open‑source, and continuously explore new tools to
+    keep workflows and applications performant.
   </h1>
+  <div class="w-full mt-10">
+    <a
+      href="mailto:jorgerosbel@proton.me"
+      class="h-6 bg-dark-text/3 py-2 px-3 rounded border
+  dark:border-dark-text/20 border-light-text/20"
+      >Contact me</a
+    >
+  </div>
+  <Banner />
 </section>
