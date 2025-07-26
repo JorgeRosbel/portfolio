@@ -1,0 +1,20 @@
+---
+const elements = [
+  { data: '2+', label: 'Years of Experience' },
+  { data: '10+', label: 'Projects Completed' },
+  { data: '22+', label: 'Github Stars' },
+];
+---
+
+<article
+  class="w-full grid grid-cols-1 md:grid-cols-3 mt-12 border-y py-10 dark:border-dark-text/10 border-light-text/10 gap-6"
+>
+  {
+    elements.map(element => (
+      <div class="flex flex-col gap-3 items-center">
+        <span class="text-5xl font-bold dark:text-dark-text text-light-text">{element.data}</span>
+        <span class="font-semibold dark:text-dark-text/80 text-light-text/80">{element.label}</span>
+      </div>
+    ))
+  }
+</article>
