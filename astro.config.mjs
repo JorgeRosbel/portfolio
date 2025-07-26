@@ -5,13 +5,14 @@ import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://jorgerosbel.vercel.app',
   integrations: [mdx(), sitemap()],
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(),tsconfigPaths()],
   },
 });
