@@ -1,9 +1,8 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
-import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/blog-placeholder-1.jpg';
+import type { ImageMetadata } from 'astro';
+import { ClientRouter } from 'astro:transitions';
 import { SITE_TITLE } from '../consts';
 
 interface Props {
@@ -55,3 +54,23 @@ const { title, description, image = FallbackImage } = Astro.props as Props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+
+<ClientRouter />
+
+<script>
+  function initializeDarkModeToggle() {
+    const e = document.documentElement;
+    e.className = localStorage.getItem('theme') || 'dark';
+
+    const D = document.getElementById('dark-toggle');
+
+    if (D) {
+      D.onclick = () => {
+        e.classList.toggle('dark');
+        localStorage.setItem('theme', e.className);
+      };
+    }
+  }
+
+  document.addEventListener('astro:page-load', initializeDarkModeToggle);
+</script>
