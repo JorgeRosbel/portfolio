@@ -67,7 +67,8 @@ const { title, description, image = FallbackImage } = Astro.props as Props;
     if (D) {
       D.onclick = () => {
         e.classList.toggle('dark');
-        localStorage.setItem('theme', e.className);
+        localStorage.setItem('theme', e.className.length > 0 ? e.className : 'light');
+        console.log(e.className);
       };
     }
   }
