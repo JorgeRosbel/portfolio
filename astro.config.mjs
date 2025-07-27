@@ -11,7 +11,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   site: 'https://jorgerosbel.vercel.app',
   integrations: [mdx(), sitemap()],
-
+  output: "server",
   vite: {
     plugins: [tailwindcss(),tsconfigPaths()],
   },
