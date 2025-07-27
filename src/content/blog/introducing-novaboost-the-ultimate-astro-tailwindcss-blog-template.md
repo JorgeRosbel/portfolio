@@ -1,7 +1,7 @@
 ---
 title: "Introducing NovaBoost: The Ultimate Astro & TailwindCSS Blog Template"
 pubDate: "Jul 27 2025"
-tags: ["astro", "tailwindcss", "seo", "blog-template", "ai"]
+tags: ["astro", "seo", "blog-template"]
 description: "Discover NovaBoost, a free, SEO‑optimized blog template built with Astro 5 and TailwindCSS, featuring JSON‑LD and optional AI-powered post generation."
 ---
 

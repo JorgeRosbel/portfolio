@@ -80,5 +80,7 @@ const { title, description, image = FallbackImage } = Astro.props as Props;
     }
   }
 
-  document.addEventListener('astro:page-load', initializeDarkModeToggle);
+  initializeDarkModeToggle();
+
+  // document.addEventListener('astro:page-load', initializeDarkModeToggle);
 </script>
