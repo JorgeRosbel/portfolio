@@ -17,6 +17,6 @@ if (!post) throw new Error('Post no encontrado.');
 const { Content } = await render(post);
 ---
 
-<BlogPost>
+<BlogPost postData={post}>
   <Content />
 </BlogPost>

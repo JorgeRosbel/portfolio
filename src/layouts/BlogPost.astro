@@ -1,9 +1,30 @@
 ---
-import MainLayout from './MainLayout.astro';
+import Header from '@/components/Header.astro';
+import BaseHead from '@/components/BaseHead.astro';
+import Footer from '@/components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+type TPost = Awaited<ReturnType<typeof getCollection>>[0];
+
+interface Props {
+  postData: TPost;
+}
+
+const { postData } = Astro.props as Props;
 ---
 
-<MainLayout>
-  <section class="mt-30 w-full max-w-[900px] prose dark:prose-invert fade-up">
-    <slot />
-  </section>
-</MainLayout>
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <BaseHead title={postData.data.title} description={postData.data.description} />
+  </head>
+  <body class="dark:bg-dark-bg w-full bg-light-bg flex flex-col items-center">
+    <Header />
+    <main class="w-full max-w-[900px] flex flex-col items-center px-8">
+      <section class="mt-30 w-full max-w-[900px] prose dark:prose-invert fade-up">
+        <slot />
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
