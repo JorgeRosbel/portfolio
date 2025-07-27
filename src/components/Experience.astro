@@ -1,10 +1,59 @@
 ---
 import Title from './Title.astro';
+
+const experiences = [
+  {
+    name: 'NeusGen',
+    url: 'https://mvp.neusgen.com/',
+    description:
+      'Led the end‑to‑end development of an AI‑powered educational platform for high‑school students, enhancing personalized learning through adaptive content delivery and real‑time feedback.',
+  },
+  {
+    name: 'Geofisik Tool',
+    url: 'https://tool.geofisik.com/',
+    description:
+      'Built a geophysical web application to monitor and analyze vertical displacements in structures over time, integrating interactive maps, time‑series charts, and automated anomaly detection.',
+  },
+  {
+    name: 'EmoteShowcase',
+    url: 'https://emoteshowcase.com/',
+    description:
+      'Designed and developed a web app for visualizing and dynamically resizing emotes and badges, with support for live previews, batch processing, and export optimization for streaming platforms.',
+  },
+  {
+    name: 'NeusWebs Developer',
+    url: null,
+    description:
+      'Architected and implemented a comprehensive grade‑management system for school subjects, featuring role‑based access, customizable grading scales, and automated report generation.',
+  },
+];
 ---
 
 <section class="w-full max-w-[900px] dark:text-dark-text text-light-text flex flex-col gap-7 my-10">
   <Title text="Experience" />
-  <p class="text-center dark:text-dark-text/50 text-light-text/50 text-xl fade-up py-10">
-    Nothing to show yet :(
-  </p>
+
+  <ul
+    class="dark:text-dark-text/90 text-light-text/90 text-[1.2rem] fade-up py-10 flex flex-col items-center gap-10"
+  >
+    {
+      experiences.map(({ name, url, description }) => (
+        <li class="border-l-[3px] dark:border-l-dark-text/30 border-l-light-text/30 pl-3">
+          {url ? (
+            <a
+              href={url}
+              rel="nofollow noopener noreferrer"
+              class="transition-all duration-200 hover:underline"
+              target="_blank"
+            >
+              <strong>{name}</strong>
+              <span aria-hidden="true">:</span>
+            </a>
+          ) : (
+            <strong>{name}:</strong>
+          )}{' '}
+          {description}
+        </li>
+      ))
+    }
+  </ul>
 </section>

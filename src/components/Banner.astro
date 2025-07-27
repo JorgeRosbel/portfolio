@@ -36,7 +36,7 @@ const { value, error } = await fetchGithubStars();
 const elements = [
   { data: '2+', label: 'Years of Experience' },
   { data: '10+', label: 'Projects Completed' },
-  { data: `${value ? value : ''}+`, label: value ? 'Github Stars' : error },
+  { data: `${value ? value : '???'}+`, label: value ? 'Github Stars' : error },
 ];
 ---
 
