@@ -1,7 +1,7 @@
 ---
 title: "Introducing Gitzen: AI-Powered Git Commit Automation"
 pubDate: "Jul 27 2025"
-tags: ["git", "ai", "cli", "automation", "developer-tools", "commit-messages"]
+tags: ["git", "ai", "cli","commit-messages"]
 description: "Discover Gitzen, the revolutionary AI-powered CLI tool that transforms how developers write Git commit messages and manage repository changes with intelligent automation."
 ---
 
