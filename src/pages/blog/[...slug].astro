@@ -7,7 +7,6 @@ export async function getStaticPaths() {
 
   return posts.map((post: CollectionEntry<'blog'>) => ({
     params: { slug: post.id },
-    props: post,
   }));
 }
 
