@@ -4,6 +4,7 @@ import FallbackImage from '../assets/blog-placeholder-1.jpg';
 import type { ImageMetadata } from 'astro';
 import { ClientRouter } from 'astro:transitions';
 import { SITE_TITLE } from '../consts';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -56,6 +57,7 @@ const { title, description, image = FallbackImage } = Astro.props as Props;
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
 
 <ClientRouter />
+<Analytics />
 
 <script>
   function initializeDarkModeToggle() {
