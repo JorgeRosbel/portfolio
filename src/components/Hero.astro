@@ -1,5 +1,6 @@
 ---
 import Banner from './Banner.astro';
+export const prerender = true;
 ---
 
 <section
@@ -27,5 +28,31 @@ import Banner from './Banner.astro';
       >Contact me</a
     >
   </div>
-  <Banner />
+  <Banner server:defer>
+    <div
+      slot="fallback"
+      class="w-full grid grid-cols-1 md:grid-cols-3 mt-12 border-y py-10 dark:border-dark-text/10 border-light-text/10 gap-6 fade-up"
+    >
+      <div class="flex flex-col gap-3 items-center animate-pulse">
+        <span class="text-5xl font-bold dark:text-dark-text text-light-text">???</span>
+        <span class="font-semibold dark:text-dark-text/80 text-light-text/80"
+          >Years of Experience</span
+        >
+      </div>
+
+      <div class="flex flex-col gap-3 items-center animate-pulse">
+        <span class="text-5xl font-bold dark:text-dark-text text-light-text">???</span>
+        <span class="font-semibold dark:text-dark-text/80 text-light-text/80"
+          >Projects Completed</span
+        >
+      </div>
+
+      <div class="flex flex-col gap-3 items-center animate-pulse">
+        <span class="text-5xl font-bold dark:text-dark-text text-light-text">???</span>
+        <span class="font-semibold dark:text-dark-text/80 text-light-text/80">Github Stars</span>
+      </div>
+    </div>
+
+    <Banner />
+  </Banner>
 </section>
