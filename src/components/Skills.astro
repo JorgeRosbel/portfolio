@@ -1,0 +1,21 @@
+---
+import Title from './Title.astro';
+
+const techs = ['React', 'Nextjs', 'Astro', 'Python', 'TypeScript', 'TailwindCSS', 'Git', 'GitHub'];
+---
+
+<section class="w-full max-w-[900px] dark:text-dark-text text-light-text flex flex-col gap-7 mb-20">
+  <Title text="Skills" />
+
+  <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-7">
+    {
+      techs.map(skill => (
+        <div class="border border-light-text/30 dark:border-dark-text/30 h-10 fade-up flex items-center justify-center rounded bg-light-text/2 dark:bg-dark-text/2">
+          <p class="text-center dark:text-dark-text/80 text-light-text/80 text-[1.1rem] ">
+            {skill}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</section>
