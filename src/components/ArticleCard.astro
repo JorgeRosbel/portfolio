@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+type TPosts = Awaited<ReturnType<typeof getCollection>>[0];
+
+interface Props {
+  content: TPosts;
+}
+
+const { content } = Astro.props as Props;
+---
+
+<a href={`/blog/${content.id}`} class="w-full">
+  <article
+    class="rounded border dark:border-dark-text/20 border-light-text/20 p-4 flex flex-col justify-between gap-6 fade-up transition-all
+         duration-300 cursor-pointer w-full hover:dark:bg-dark-text/3 hover:bg-light-text/3"
+  >
+    <h2 class="font-bold text-xl">{content.data.title}</h2>
+    <p class="opacity-80 text-[1rem]">{content.data.description}</p>
+    <div class="flex w-full items-center justify-between">
+      <div class="flex items-center justify-start gap-3">
+        {
+          content.data.tags.map(tag => (
+            <span class="dark:bg-light-bg/8 bg-dark-bg/8 px-3 py-1 rounded-2xl text-[0.8rem]">
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+      {(<FormattedDate date={content.data.pubDate} />)}
+    </div>
+  </article>
+</a>
