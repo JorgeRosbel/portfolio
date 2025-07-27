@@ -7,12 +7,17 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
+import vercel from '@astrojs/vercel';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://jorgerosbel.vercel.app',
   integrations: [mdx(), sitemap()],
   output: "server",
+
   vite: {
     plugins: [tailwindcss(),tsconfigPaths()],
   },
+
+  adapter: vercel(),
 });
