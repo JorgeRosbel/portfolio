@@ -298,6 +298,22 @@ En el componente mantendrías la lógica de renderizado igual, mostrando error.m
 
 Y así, combinando React, TanStack Query y Axios con HTTP Sentinel obtenemos un flujo de trabajo robusto y coherente para todas nuestras peticiones: centralizamos el mapeo de códigos HTTP a excepciones, unificamos la detección y el tratamiento de errores, y mantenemos el componente enfocado solo en la presentación y la navegación. El resultado es un código más limpio, fácil de mantener y probar, con mensajes de error claros y consistentes y una experiencia de usuario mucho más fiable.
 
+
+### 6. Métricas de rendimiento
+
+| Métrica | Valor | Descripción |
+|---------|-------|-------------|
+| **Bundle size (minified)** | 5.4 kB | Tamaño de la librería minificada |
+| **Bundle size (gzipped)** | 1.7 kB | Tamaño comprimido que se transfiere por red |
+| **Tiempo de descarga (3G lenta)** | 35 ms | Tiempo de descarga en conexiones lentas |
+| **Tiempo de descarga (4G emergente)** | 2 ms | Tiempo de descarga en conexiones modernas |
+| **Dependencias** | 0 | Sin dependencias externas |
+| **Tree-shaking** | ✅ Soportado | Importa solo lo que necesitas |
+
+*Datos obtenidos de [Bundlephobia](https://bundlephobia.com/package/http-sentinel@1.0.11)*
+
+Estos números demuestran que HTTP Sentinel es una solución extremadamente eficiente: el tamaño gzipped de solo 1.7 kB significa que agregar manejo robusto de errores HTTP a tu aplicación tiene un costo prácticamente imperceptible en términos de rendimiento.
+
 ---
 Espero que este artículo les resulte interesante y les sea de gran utilidad en sus futuros proyectos. Pueden consultar el repositorio oficial de **HTTP Sentinel** en GitHub:
 
