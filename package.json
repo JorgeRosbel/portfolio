@@ -10,7 +10,8 @@
     "prepare": "husky install",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,ts,tsx,astro}\"",
-    "check": "prettier --check \"**/*.{js,ts,tsx,astro}\""
+    "check": "prettier --check \"**/*.{js,ts,tsx,astro}\"",
+    "postinstall": "prisma generate"
   },
   "lint-staged": {
     "*.{js,ts,tsx,astro}": [
