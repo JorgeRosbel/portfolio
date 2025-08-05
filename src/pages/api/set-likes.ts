@@ -1,7 +1,5 @@
 // src/pages/api/increment-likes.ts
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '../../utils/prisma';
 
 export async function POST({ request }: { request: Request }) {
   try {
