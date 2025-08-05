@@ -20,7 +20,7 @@ export default defineConfig({
   adapter: vercel(),
    env: {
     schema: {
-      DB_USERNAME: envField.string({ context: "server", access: "secret" })
+      BASE_URL: envField.string({ context: "server", access: "secret" })
     }
   }
 });
