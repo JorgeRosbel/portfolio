@@ -1,19 +1,13 @@
 ---
-import { PrismaClient } from '@prisma/client';
+import { getLikes } from '../utils/getLikes';
 
 type Props = {
   slug: string;
 };
 
 const { slug } = Astro.props as Props;
-const prisma = new PrismaClient();
 
-const post = await prisma.post.findUnique({
-  where: { slug },
-  select: { likes: true /* añade más campos si quieres */ },
-});
-
-await prisma.$disconnect();
+const likes = await getLikes(slug);
 ---
 
 <div class="like-wrapper flex items-center justify-center h-5 gap-2" data-slug={slug}>
@@ -37,7 +31,7 @@ await prisma.$disconnect();
     </svg>
   </button>
 
-  <span class="likes-count" id={`likes-count-${slug}`}>{post?.likes ?? 0}</span>
+  <span class="likes-count" id={`likes-count-${slug}`}>{likes}</span>
 </div>
 
 <!-- Y accedemos desde el script en el cliente -->
@@ -63,7 +57,7 @@ await prisma.$disconnect();
 
       async function incrementLikes() {
         try {
-          const res = await fetch(`/api/get-likes?slug=${encodeURIComponent(slug)}`, {
+          const res = await fetch(`/api/set-likes?slug=${encodeURIComponent(slug)}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ slug }),
