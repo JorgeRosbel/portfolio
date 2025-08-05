@@ -1,8 +1,0 @@
-{
-  "functions": {
-    "src/pages/api/**/*.ts": {
-      "maxDuration": 10
-    }
-  },
-  "buildCommand": "prisma generate && npm run build"
-}
