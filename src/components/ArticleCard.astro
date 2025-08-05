@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
+import Likes from './Likes.astro';
+import LikeLoader from './LikeLoader.astro';
 
 type TPosts = Awaited<ReturnType<typeof getCollection>>[0];
 
@@ -8,17 +10,19 @@ interface Props {
   content: TPosts;
 }
 
+export const prerender = true;
+
 const { content } = Astro.props as Props;
 ---
 
-<a href={`/blog/${content.id}`} class="w-full">
-  <article
-    class="rounded border dark:border-dark-text/20 border-light-text/20 p-4 flex flex-col justify-between gap-6 fade-up transition-all
+<article
+  class="rounded border dark:border-dark-text/20 border-light-text/20 p-4 flex flex-col justify-between gap-6 fade-up transition-all
          duration-300 cursor-pointer w-full hover:dark:bg-dark-text/3 hover:bg-light-text/3"
-  >
-    <h2 class="font-bold text-xl">{content.data.title}</h2>
-    <p class="opacity-80 text-[1rem]">{content.data.description}</p>
-    <div class="flex w-full items-center justify-between">
+>
+  <h2 class="font-bold text-xl">{content.data.title}</h2>
+  <p class="opacity-80 text-[1rem]">{content.data.description}</p>
+  <div class="flex w-full items-center justify-between">
+    <a href={`/blog/${content.id}`} class="w-full">
       <div class="flex items-center justify-start gap-3 flex-wrap">
         {
           content.data.tags.map(tag => (
@@ -28,7 +32,13 @@ const { content } = Astro.props as Props;
           ))
         }
       </div>
+    </a>
+
+    <div class="flex items-center justify-between gap-10 max-w-[300px]">
+      <Likes slug={content.id} server:defer>
+        <LikeLoader slot="fallback" />
+      </Likes>
       {(<FormattedDate date={content.data.pubDate} />)}
     </div>
-  </article>
-</a>
+  </div>
+</article>

@@ -1,0 +1,97 @@
+---
+import { PrismaClient } from '@prisma/client';
+
+type Props = {
+  slug: string;
+};
+
+const { slug } = Astro.props as Props;
+const prisma = new PrismaClient();
+
+const post = await prisma.post.findUnique({
+  where: { slug },
+  select: { likes: true /* añade más campos si quieres */ },
+});
+
+await prisma.$disconnect();
+---
+
+<div class="like-wrapper flex items-center justify-center h-5 gap-2" data-slug={slug}>
+  <button class="like-btn cursor-pointer" name={slug} id={`like-btn-${slug}`}>
+    <svg
+      class="like-icon"
+      id={`like-icon-${slug}`}
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.72-7.72 1.06-1.06a5.5 5.5 0 0 0 0-7.84z"
+      ></path>
+    </svg>
+  </button>
+
+  <span class="likes-count" id={`likes-count-${slug}`}>{post?.likes ?? 0}</span>
+</div>
+
+<!-- Y accedemos desde el script en el cliente -->
+<script type="module">
+  document.querySelectorAll('.like-wrapper').forEach(wrapper => {
+    const slug = wrapper.dataset.slug;
+    const btn = wrapper.querySelector('.like-btn');
+    const icon = wrapper.querySelector('.like-icon');
+    const countSpan = wrapper.querySelector('.likes-count');
+
+    if (!slug || !btn || !icon || !countSpan) return;
+
+    if (localStorage.getItem(slug) === 'true') {
+      icon.style.fill = 'red';
+      icon.style.stroke = 'red';
+    } else {
+      icon.style.fill = 'none';
+      icon.style.stroke = 'currentColor';
+    }
+
+    if (!btn.dataset.listenerAttached) {
+      btn.dataset.listenerAttached = 'true';
+
+      async function incrementLikes() {
+        try {
+          const res = await fetch(`/api/get-likes?slug=${encodeURIComponent(slug)}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ slug }),
+          });
+
+          if (!res.ok) throw new Error(await res.text());
+
+          const { likes } = await res.json();
+          countSpan.textContent = likes;
+        } catch (err) {
+          localStorage.setItem(slug, false);
+          console.error('Error incrementing likes:', err);
+        }
+      }
+
+      btn.addEventListener('click', () => {
+        if (localStorage.getItem(slug) === 'true') return;
+
+        countSpan.textContent = parseInt(countSpan.textContent) + 1;
+        localStorage.setItem(slug, true);
+        btn.disabled = true;
+        icon.style.fill = 'red';
+        icon.style.stroke = 'red';
+
+        incrementLikes().finally(() => {
+          btn.disabled = false;
+        });
+      });
+    }
+  });
+</script>
