@@ -2,7 +2,7 @@
 
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import vercel from '@astrojs/vercel';
@@ -18,4 +18,9 @@ export default defineConfig({
     plugins: [tailwindcss(),tsconfigPaths()],
   },
   adapter: vercel(),
+   env: {
+    schema: {
+      DB_USERNAME: envField.string({ context: "server", access: "secret" })
+    }
+  }
 });
