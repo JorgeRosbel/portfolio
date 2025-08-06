@@ -1,59 +1,147 @@
 ---
 import Title from './Title.astro';
-
-const experiences = [
-  {
-    name: 'NeusGen',
-    url: 'https://mvp.neusgen.com/',
-    description:
-      'Led the end‑to‑end development of an AI‑powered educational platform for high‑school students, enhancing personalized learning through adaptive content delivery and real‑time feedback.',
-  },
-  {
-    name: 'Geofisik Tool',
-    url: 'https://tool.geofisik.com/',
-    description:
-      'Built a geophysical web application to monitor and analyze vertical displacements in structures over time, integrating interactive maps, time‑series charts, and automated anomaly detection.',
-  },
-  {
-    name: 'EmoteShowcase',
-    url: 'https://emoteshowcase.com/',
-    description:
-      'Designed and developed a web app for visualizing and dynamically resizing emotes and badges, with support for live previews, batch processing, and export optimization for streaming platforms.',
-  },
-  {
-    name: 'NeusWebs Developer',
-    url: null,
-    description:
-      'Architected and implemented a comprehensive grade‑management system for school subjects, featuring role‑based access, customizable grading scales, and automated report generation.',
-  },
-];
 ---
 
-<section class="w-full max-w-[900px] dark:text-dark-text text-light-text flex flex-col gap-7 my-10">
+<section
+  class="w-full max-w-[900px] dark:text-dark-text text-light-text flex flex-col my-10 gap-2 text-[1.1rem]"
+>
   <Title text="Experience" />
 
-  <ul
-    class="dark:text-dark-text/90 text-light-text/90 text-[1.2rem] fade-up py-10 flex flex-col items-center gap-10"
+  <article
+    class="fade-up relative before:absolute before:h-[2px] before:w-[9px] before:bg-light-text/60 dark:before:bg-dark-text/60
+  before:left-[-16px] before:top-[0.7em] mt-9 before:leading-[1.1rem]"
   >
-    {
-      experiences.map(({ name, url, description }) => (
-        <li class="border-l-[3px] dark:border-l-dark-text/30 border-l-light-text/30 pl-3">
-          {url ? (
-            <a
-              href={url}
-              rel="nofollow noopener noreferrer"
-              class="transition-all duration-200 hover:underline"
-              target="_blank"
-            >
-              <strong>{name}</strong>
-              <span aria-hidden="true">:</span>
-            </a>
-          ) : (
-            <strong>{name}:</strong>
-          )}{' '}
-          {description}
-        </li>
-      ))
-    }
-  </ul>
+    <p class="dark:text-dark-text/90 text-light-text/90">
+      I designed and developed
+      <a
+        href="https://mvp.neusgen.com/"
+        class="underline underline-offset-4"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+      >
+        <span class="font-semibold">NeusGen</span>
+      </a>, an AI-powered educational platform for high school students, delivering adaptive content
+      and real-time feedback to enhance personalized learning.
+    </p>
+  </article>
+
+  <article
+    class="fade-up relative before:absolute before:h-[2px] before:w-[9px] before:bg-light-text/60 dark:before:bg-dark-text/60
+  before:left-[-16px] before:top-[0.7em] before:leading-[1.1rem]"
+  >
+    <p class="dark:text-dark-text/90 text-light-text/90">
+      I built
+      <a
+        href="https://tool.geofisik.com/"
+        rel="nofollow noopener noreferrer"
+        class="underline underline-offset-4"
+        target="_blank"
+      >
+        <span class="font-semibold">Geofisik Tool</span>
+      </a>, a geophysical web application to monitor and analyze vertical displacements in
+      structures over time, integrating interactive maps, time-series charts, and automated anomaly
+      detection.
+    </p>
+  </article>
+
+  <article
+    class="fade-up relative before:absolute before:h-[2px] before:w-[9px] before:bg-light-text/60 dark:before:bg-dark-text/60
+  before:left-[-16px] before:top-[0.7em] before:leading-[1.1rem]"
+  >
+    <p class="dark:text-dark-text/90 text-light-text/90">
+      I created
+      <a
+        href="https://emoteshowcase.com/"
+        rel="nofollow noopener noreferrer"
+        class="underline underline-offset-4"
+        target="_blank"
+      >
+        <span class="font-semibold">EmoteShowcase</span>
+      </a>, a web app that allows dynamic resizing and visualization of emotes and badges, with live
+      previews, batch processing, and optimized export for streaming platforms.
+    </p>
+  </article>
+
+  <article
+    class="fade-up relative before:absolute before:h-[2px] before:w-[9px] before:bg-light-text/60 dark:before:bg-dark-text/60
+  before:left-[-16px] before:top-[0.7em] before:leading-[1.1rem]"
+  >
+    <p class="dark:text-dark-text/90 text-light-text/90">
+      I developed <span class="font-semibold">NeusWebs Developer</span>, a complete grade‑management
+      system for school subjects, including role-based access, customizable grading scales, and
+      automated report generation.
+    </p>
+  </article>
+
+  <article
+    class="fade-up relative before:absolute before:h-[2px] before:w-[9px] before:bg-light-text/60 dark:before:bg-dark-text/60
+  before:left-[-16px] before:top-[0.7em] before:leading-[1.1rem]"
+  >
+    <p class="dark:text-dark-text/90 text-light-text/90">
+      I built
+      <a
+        href="https://github.com/JorgeRosbel/http-sentinel"
+        rel="nofollow noopener noreferrer"
+        class="underline underline-offset-4"
+        target="_blank"
+      >
+        <span class="font-semibold">http-sentinel</span>
+      </a>, a TypeScript library that provides a complete set of HTTP error classes and utilities
+      for consistent and structured error handling in applications.
+    </p>
+  </article>
+
+  <article
+    class="fade-up relative before:absolute before:h-[2px] before:w-[9px] before:bg-light-text/60 dark:before:bg-dark-text/60
+  before:left-[-16px] before:top-[0.7em] before:leading-[1.1rem]"
+  >
+    <p class="dark:text-dark-text/90 text-light-text/90">
+      I created
+      <a
+        href="https://github.com/JorgeRosbel/gitzen"
+        rel="nofollow noopener noreferrer"
+        class="underline underline-offset-4"
+        target="_blank"
+      >
+        <span class="font-semibold">gitzen</span>
+      </a>, an AI-driven command-line tool designed to generate descriptive and meaningful Git
+      commit messages automatically, improving developer workflow.
+    </p>
+  </article>
+
+  <article
+    class="fade-up relative before:absolute before:h-[2px] before:w-[9px] before:bg-light-text/60 dark:before:bg-dark-text/60
+  before:left-[-16px] before:top-[0.7em] before:leading-[1.1rem]"
+  >
+    <p class="dark:text-dark-text/90 text-light-text/90">
+      I designed
+      <a
+        href="https://github.com/JorgeRosbel/NovaBoost"
+        rel="nofollow noopener noreferrer"
+        class="underline underline-offset-4"
+        target="_blank"
+      >
+        <span class="font-semibold">NovaBoost</span>
+      </a>, a free blog template built with Astro 5 and TailwindCSS, featuring SEO optimizations,
+      JSON-LD integration, and optional AI-generated post support.
+    </p>
+  </article>
+
+  <article
+    class="fade-up relative before:absolute before:h-[2px] before:w-[9px] before:bg-light-text/60 dark:before:bg-dark-text/60
+  before:left-[-16px] before:top-[0.7em] before:leading-[1.1rem]"
+  >
+    <p class="dark:text-dark-text/90 text-light-text/90">
+      I developed
+      <a
+        href="https://github.com/JorgeRosbel/easy-consent"
+        rel="nofollow noopener noreferrer"
+        class="underline underline-offset-4"
+        target="_blank"
+      >
+        <span class="font-semibold">easy-consent</span>
+      </a>, a lightweight solution for managing cookie consent and configurations, currently in beta
+      and aimed at simplifying GDPR compliance.
+    </p>
+  </article>
 </section>
