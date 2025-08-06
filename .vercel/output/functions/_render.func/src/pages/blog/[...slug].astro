@@ -1,0 +1,22 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import BlogPost from '../../layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return posts.map((post: CollectionEntry<'blog'>) => ({
+    params: { slug: post.id },
+  }));
+}
+
+const posts = await getCollection('blog');
+const post = posts.find(p => p.id === Astro.params.slug);
+if (!post) throw new Error('Post no encontrado.');
+
+const { Content } = await render(post);
+---
+
+<BlogPost postData={post}>
+  <Content />
+</BlogPost>
