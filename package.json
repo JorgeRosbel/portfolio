@@ -28,7 +28,7 @@
     "@tailwindcss/vite": "^4.1.11",
     "@vercel/analytics": "^1.5.0",
     "astro": "^5.12.3",
-    "http-sentinel": "^1.0.11",
+    "http-sentinel": "^1.0.12",
     "sharp": "^0.34.2",
     "tailwindcss": "^4.1.11"
   },
