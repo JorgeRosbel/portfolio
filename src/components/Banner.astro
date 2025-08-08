@@ -1,42 +1,28 @@
 ---
+import { request } from 'http-sentinel';
+
 interface GithubResponse {
   stargazers_count: number;
 }
 
-const fetchGithubStars = async (): Promise<{ value: number | null; error: string | null }> => {
-  try {
-    const response = await fetch(
-      'https://api.github.com/users/JorgeRosbel/repos?per_page=100&page=1'
-    );
-    const data = (await response.json()) as GithubResponse[];
+const { success, data, error } = await request.get<GithubResponse[]>(
+  'https://api.github.com/users/JorgeRosbel/repos?per_page=100&page=1'
+);
 
-    if (response.status !== 200) {
-      if (response.status === 403 || response.status === 429) {
-        return { value: null, error: 'Too many requests' };
-      }
-      if (response.status === 500) {
-        return { value: null, error: 'Unable to retrieve data' };
-      } else {
-        return { value: null, error: 'An unexpected error occurred. Please try again later' };
-      }
-    }
+const stars = data?.reduce((acc: number, curr: GithubResponse) => {
+  return acc + curr.stargazers_count;
+}, 0);
 
-    const stars = data.reduce((acc, curr) => {
-      return acc + curr.stargazers_count;
-    }, 0);
-
-    return { value: stars, error: null };
-  } catch (error) {
-    throw error;
-  }
-};
-
-const { value, error } = await fetchGithubStars();
+const errorMessage = success
+  ? 'Github Stars'
+  : error?.statusCode === 403 || error?.statusCode === 429
+    ? 'Too Many Request'
+    : error?.message;
 
 const elements = [
   { data: '2+', label: 'Years of Experience' },
   { data: '10+', label: 'Projects Completed' },
-  { data: `${value ? value : '???'}+`, label: value ? 'Github Stars' : error },
+  { data: `${success ? stars : '???'}+`, label: errorMessage },
 ];
 ---
 
